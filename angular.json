@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "isthmus-angular"
+  "defaultProject": "isthmus-angular",
+  "cli": {
+    "analytics": "b3c52ccd-6313-4773-b3de-f00e6137ab90"
+  }
 }
