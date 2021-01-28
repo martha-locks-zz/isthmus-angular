@@ -23,10 +23,12 @@
  */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
+import { ClienteFormComponent } from './components/cliente-form/cliente-form.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'cliente-form', component: ClienteFormComponent },
   { path: '**', component: HomeComponent },
 ];
 
