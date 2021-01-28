@@ -26,12 +26,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ClienteFormComponent } from './components/cliente-form/cliente-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ClienteFormComponent
   ],
   imports: [
     BrowserModule,
