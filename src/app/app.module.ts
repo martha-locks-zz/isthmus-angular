@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2020 Martha Ribeiro Locks.
+ * Copyright 2021 Martha Ribeiro Locks.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ClienteFormComponent } from './components/cliente-form/cliente-form.component';
+import { ClienteFormComponent } from './pages/cliente-form/cliente-form.component';
 
 @NgModule({
   declarations: [

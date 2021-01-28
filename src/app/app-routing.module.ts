@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2020 Martha Ribeiro Locks.
+ * Copyright 2021 Martha Ribeiro Locks.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@
  */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ClienteFormComponent } from './components/cliente-form/cliente-form.component';
+import { ClienteFormComponent } from './pages/cliente-form/cliente-form.component';
 import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [

@@ -1,0 +1,82 @@
+<div class="row  mt-2">
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'home'">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Cadastro</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="col-12">
+        <h2>Formulário de cadastro</h2>
+        <form>
+            <div class="form-group">
+                <label for="nome">*Nome </label>
+                <input type="text" [ngClass]="{'border-danger': submitted && clienteForm.controls.nome.errors}"
+                    class="form-control" id="nome">
+                <small class="form-text text-danger d-none"
+                    [ngClass]="{'d-block': submitted && clienteForm.controls.nome.errors}">
+                    Obrigatório
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="cpf">*CPF </label>
+                <input type="text" class="form-control" id="cpf" [dropSpecialCharacters]="false" mask="000.000.000-00">
+            </div>
+            <div class="form-group">
+                <label for="dataNascimento">*Data Nascimento </label>
+                <input type="text" class="form-control" id="dataNascimento" [dropSpecialCharacters]="false"
+                    mask="00/00/0000">
+            </div>
+            <div class="form-group">
+                <label for="sexo">*Sexo </label>
+                <select class="form-control" id="sexo">
+                    <option>selecione</option>
+                    <option>feminino</option>
+                    <option>masculino</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone </label>
+                <input type="text" class="form-control" id="telefone" [dropSpecialCharacters]="false"
+                    mask="(00)00000-0000">
+            </div>
+            <div class="form-group">
+                <label for="email">Email </label>
+                <input type="text" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+                <label for="cep">CEP </label>
+                <input type="text" class="form-control" id="cep" [dropSpecialCharacters]="false" mask="00000-000">
+            </div>
+            <div class="form-group">
+                <label for="logradouro">*Logradouro </label>
+                <input type="text" class="form-control" id="logradouro">
+            </div>
+            <div class="form-group">
+                <label for="complemento">Complemento </label>
+                <input type="text" class="form-control" id="complemento">
+            </div>
+            <div class="form-group">
+                <label for="bairro">*Bairro </label>
+                <input type="text" class="form-control" id="bairro">
+            </div>
+            <div class="form-group">
+                <label for="cidade">*Cidade </label>
+                <input type="text" class="form-control" id="cidade">
+            </div>
+            <div class="form-group">
+                <label for="uf">*UF </label>
+                <input type="text" class="form-control" id="uf">
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-12">
+                    <button class="btn-lg btn-danger">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
