@@ -37,7 +37,7 @@
                     <td>{{pessoa.cliente.cpf}}</td>
                     <td><button type="button" class="btn btn-danger">Excluir</button></td>
                     <td><button type="button" class="btn btn-success">Editar</button></td>
-                    <td><button type="button" class="btn btn-primary">Detalhes</button></td>
+                    <td><a class="btn btn-primary" [routerLink]="['/detalhes', pessoa.cpf]">Detalhes</a></td>
                 </tr>
             </tbody>
         </table>

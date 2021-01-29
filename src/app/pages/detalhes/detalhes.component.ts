@@ -21,33 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { NgxMaskModule } from 'ngx-mask';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ClientesService } from 'src/app/services/clientes.service';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ClienteFormComponent } from './pages/cliente-form/cliente-form.component';
-import { DetalhesComponent } from './pages/detalhes/detalhes.component';
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    ClienteFormComponent,
-    DetalhesComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgxMaskModule.forRoot(),
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+@Component({
+  selector: 'app-detalhes',
+  templateUrl: './detalhes.component.html',
+  styleUrls: ['./detalhes.component.scss']
 })
-export class AppModule { }
+export class DetalhesComponent implements OnInit {
+
+  public cliente: any;
+
+  constructor(
+    private clientesService: ClientesService,
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit(): void {
+
+    const cpf: any = this.route.snapshot.paramMap.get('cpf');
+
+    const result = this.clientesService.getClienteByCpf(cpf);
+
+    if (result.length > 0) {
+
+      this.cliente = (result[0]).cliente;
+    }
+
+  }
+
+}

@@ -1,0 +1,68 @@
+<div class="row  mt-2">
+    <div class="col-10">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Detalhes</li>
+            </ol>
+        </nav>
+        <h2>
+            Detalhes {{cliente?.nome}}
+        </h2>
+    </div>
+    <div class="col-2">
+        <a routerLink="/home" type="button" class="btn btn-secondary float-right mt-2">
+            Voltar
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div *ngIf="!cliente" class="alert alert-info" role="alert">
+            Nenhum cliente cadastrado com este CPF.
+        </div>
+    </div>
+    <div class="col-6">
+        <dl>
+            <dt>Nome</dt>
+            <dd>{{cliente?.nome}}</dd>
+
+            <dt>CPF</dt>
+            <dd>{{cliente?.cpf}}</dd>
+
+            <dt>Data Nascimento</dt>
+            <dd>{{cliente?.dataNascimento}}</dd>
+
+            <dt>Sexo</dt>
+            <dd>{{cliente?.sexo}}</dd>
+
+            <dt>Telefone</dt>
+            <dd>{{cliente?.telefone}}</dd>
+
+            <dt>Email</dt>
+            <dd>{{cliente?.email}}</dd>
+        </dl>
+    </div>
+
+    <div class="col-6">
+        <dl>
+            <dt>CEP</dt>
+            <dd>{{cliente?.cep}}</dd>
+
+            <dt>Logradouro</dt>
+            <dd>{{cliente?.logradouro}}</dd>
+
+            <dt>Complemento</dt>
+            <dd>{{cliente?.complemento}}</dd>
+
+            <dt>Bairro</dt>
+            <dd>{{cliente?.bairro}}</dd>
+
+            <dt>Cidade</dt>
+            <dd>{{cliente?.cidade}}</dd>
+
+            <dt>UF</dt>
+            <dd>{{cliente?.uf}}</dd>
+        </dl>
+    </div>
+</div>

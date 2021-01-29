@@ -21,33 +21,3 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { NgxMaskModule } from 'ngx-mask';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ClienteFormComponent } from './pages/cliente-form/cliente-form.component';
-import { DetalhesComponent } from './pages/detalhes/detalhes.component';
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    ClienteFormComponent,
-    DetalhesComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgxMaskModule.forRoot(),
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }

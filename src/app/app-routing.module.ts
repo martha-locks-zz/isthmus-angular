@@ -24,11 +24,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ClienteFormComponent } from './pages/cliente-form/cliente-form.component';
+import { DetalhesComponent } from './pages/detalhes/detalhes.component';
 import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'cliente-form', component: ClienteFormComponent },
+  { path: 'detalhes/:cpf', component: DetalhesComponent },
   { path: '**', component: HomeComponent },
 ];
 
