@@ -24,6 +24,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxMaskModule } from 'ngx-mask';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +41,7 @@ import { ClienteFormComponent } from './pages/cliente-form/cliente-form.componen
     BrowserModule,
     AppRoutingModule,
     NgxMaskModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

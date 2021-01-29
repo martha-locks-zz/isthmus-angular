@@ -6,10 +6,12 @@
                 <li class="breadcrumb-item active" aria-current="page">Cadastro</li>
             </ol>
         </nav>
-    </div>
-    <div class="col-12">
         <h2>Formulário de cadastro</h2>
-        <form [formGroup]="clienteForm">
+    </div>
+</div>
+<form [formGroup]="clienteForm">
+    <div class="row">
+        <div class="col-6">
             <div class="form-group">
                 <label for="nome">Nome *</label>
                 <input type="text" formControlName="nome"
@@ -20,6 +22,9 @@
                     Obrigatório
                 </small>
             </div>
+        </div>
+
+        <div class="col-6">
             <div class="form-group">
                 <label for="cpf">CPF *</label>
                 <input type="text" formControlName="cpf"
@@ -31,6 +36,9 @@
                     Obrigatório
                 </small>
             </div>
+        </div>
+
+        <div class="col-6">
             <div class="form-group">
                 <label for="dataNascimento">Data Nascimento *</label>
                 <input type="text" formControlName="dataNascimento"
@@ -42,6 +50,9 @@
                     Obrigatório
                 </small>
             </div>
+        </div>
+
+        <div class="col-6">
             <div class="form-group">
                 <label for="sexo">Sexo *</label>
                 <select class="form-control" formControlName="sexo"
@@ -55,21 +66,32 @@
                     Obrigatório
                 </small>
             </div>
+        </div>
+
+        <div class="col-6">
             <div class="form-group">
                 <label for="telefone">Telefone </label>
                 <input type="text" formControlName="telefone" class="form-control" id="telefone"
                     [dropSpecialCharacters]="false" mask="(00)00000-0000" [showMaskTyped]="true"
                     placeHolderCharacter="_">
             </div>
+        </div>
+        <div class="col-6">
             <div class="form-group">
                 <label for="email">Email </label>
                 <input type="text" formControlName="email" class="form-control" id="email">
             </div>
+        </div>
+
+        <div class="col-6">
             <div class="form-group">
                 <label for="cep">CEP </label>
                 <input type="text" formControlName="cep" class="form-control" id="cep" [dropSpecialCharacters]="false"
                     mask="00000-000" [showMaskTyped]="true" placeHolderCharacter="_">
             </div>
+        </div>
+
+        <div class="col-6">
             <div class="form-group">
                 <label for="logradouro">Logradouro *</label>
                 <input type="text" formControlName="logradouro"
@@ -80,10 +102,16 @@
                     Obrigatório
                 </small>
             </div>
+        </div>
+
+        <div class="col-6">
             <div class="form-group">
                 <label for="complemento">Complemento </label>
                 <input type="text" formControlName="complemento" class="form-control" id="complemento">
             </div>
+        </div>
+
+        <div class="col-6">
             <div class="form-group">
                 <label for="bairro">Bairro *</label>
                 <input type="text" formControlName="bairro"
@@ -94,6 +122,9 @@
                     Obrigatório
                 </small>
             </div>
+        </div>
+
+        <div class="col-6">
             <div class="form-group">
                 <label for="cidade">Cidade *</label>
                 <input type="text" formControlName="cidade"
@@ -104,6 +135,9 @@
                     Obrigatório
                 </small>
             </div>
+        </div>
+
+        <div class="col-6">
             <div class="form-group">
                 <label for="uf">UF *</label>
                 <input type="text" formControlName="uf"
@@ -114,14 +148,14 @@
                     Obrigatório
                 </small>
             </div>
-
-            <div class="row mt-2">
-                <div class="col-12">
-                    <a class="btn-lg btn-danger" (click)="save()">
-                        Salvar
-                    </a>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+
+    <div class="row mt-2">
+        <div class="col-12">
+            <a class="btn-lg btn-danger" (click)="save()">
+                Salvar
+            </a>
+        </div>
+    </div>
+</form>
