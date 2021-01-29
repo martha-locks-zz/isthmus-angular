@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  public listClientes = [];
+
   constructor() { }
 
   ngOnInit(): void {
+
+    const _listClientes = localStorage.getItem('listClientes');
+
+    if (_listClientes) {
+      this.listClientes = JSON.parse(_listClientes);
+    }
   }
 
 }

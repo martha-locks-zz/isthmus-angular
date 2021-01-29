@@ -27,23 +27,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td><button type="button" class="btn btn-danger">Excluir</button></td>
-                    <td><button type="button" class="btn btn-success">Editar</button></td>
-                    <td><button type="button" class="btn btn-primary">Detalhes</button></td>
-                </tr>
-                <tr>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td><button type="button" class="btn btn-danger">Excluir</button></td>
-                    <td><button type="button" class="btn btn-success">Editar</button></td>
-                    <td><button type="button" class="btn btn-primary">Detalhes</button></td>
-                </tr>
-                <tr>
-                    <td>Larry</td>
-                    <td>the Bird</td>
+                <tr *ngFor="let pessoa of listClientes">
+                    <td>{{pessoa.cliente.nome}}</td>
+                    <td>{{pessoa.cliente.cpf}}</td>
                     <td><button type="button" class="btn btn-danger">Excluir</button></td>
                     <td><button type="button" class="btn btn-success">Editar</button></td>
                     <td><button type="button" class="btn btn-primary">Detalhes</button></td>
