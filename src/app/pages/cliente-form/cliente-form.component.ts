@@ -21,6 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -49,7 +50,9 @@ export class ClienteFormComponent implements OnInit {
 
   public submitted = false;
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   ngOnInit(): void {
   }
@@ -59,4 +62,25 @@ export class ClienteFormComponent implements OnInit {
     this.submitted = true;
   }
 
+  public searchCep() {
+
+    const cep: string = this.clienteForm.value.cep;
+
+    if (cep.length === 9) {
+
+      const URL = `https://viacep.com.br/ws/${cep}/json/`;
+
+      this.http.get<any>(URL).subscribe((address: any) => {
+        this.fillAddress(address);
+      });
+    }
+  }
+
+  private fillAddress(address: any): void {
+
+    this.clienteForm.get('logradouro')?.setValue(address.logradouro);
+    this.clienteForm.get('bairro')?.setValue(address.bairro);
+    this.clienteForm.get('cidade')?.setValue(address.localidade);
+    this.clienteForm.get('uf')?.setValue(address.uf);
+  }
 }

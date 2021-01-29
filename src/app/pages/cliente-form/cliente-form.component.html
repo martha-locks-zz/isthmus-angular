@@ -87,7 +87,7 @@
             <div class="form-group">
                 <label for="cep">CEP </label>
                 <input type="text" formControlName="cep" class="form-control" id="cep" [dropSpecialCharacters]="false"
-                    mask="00000-000" [showMaskTyped]="true" placeHolderCharacter="_">
+                    mask="00000-000" [showMaskTyped]="true" placeHolderCharacter="_" (keyup)='searchCep()'>
             </div>
         </div>
 
