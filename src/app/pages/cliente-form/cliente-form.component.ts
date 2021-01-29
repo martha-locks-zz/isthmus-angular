@@ -54,4 +54,9 @@ export class ClienteFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public save() {
+
+    this.submitted = true;
+  }
+
 }
