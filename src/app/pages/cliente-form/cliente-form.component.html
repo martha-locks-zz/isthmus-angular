@@ -12,8 +12,9 @@
         <form>
             <div class="form-group">
                 <label for="nome">*Nome </label>
-                <input type="text" [ngClass]="{'border-danger': submitted && clienteForm.controls.nome.errors}"
-                    class="form-control" id="nome">
+                <input type="text" formControlName="nome"
+                    [ngClass]="{'border-danger': submitted && clienteForm.controls.nome.errors}" class="form-control"
+                    id="nome">
                 <small class="form-text text-danger d-none"
                     [ngClass]="{'d-block': submitted && clienteForm.controls.nome.errors}">
                     Obrigatório
@@ -21,13 +22,25 @@
             </div>
             <div class="form-group">
                 <label for="cpf">*CPF </label>
-                <input type="text" class="form-control" id="cpf" [dropSpecialCharacters]="false" mask="000.000.000-00"
-                    [showMaskTyped]="true" placeHolderCharacter="">
+                <input type="text" formControlName="cpf"
+                    [ngClass]="{'border-danger': submitted && clienteForm.controls.cpf.errors}" class="form-control"
+                    class="form-control" id="cpf" [dropSpecialCharacters]="false" mask="000.000.000-00"
+                    [showMaskTyped]="true" placeHolderCharacter="_">
+                <small class="form-text text-danger d-none"
+                    [ngClass]="{'d-block': submitted && clienteForm.controls.cpf.errors}">
+                    Obrigatório
+                </small>
             </div>
             <div class="form-group">
                 <label for="dataNascimento">*Data Nascimento </label>
-                <input type="text" class="form-control" id="dataNascimento" [dropSpecialCharacters]="false"
-                    mask="00/00/0000" [showMaskTyped]="true" placeHolderCharacter="">
+                <input type="text" formControlName="dataNascimento"
+                    [ngClass]="{'border-danger': submitted && clienteForm.controls.dataNascimento.errors}"
+                    class="form-control" id="dataNascimento" [dropSpecialCharacters]="false" mask="00/00/0000"
+                    [showMaskTyped]="true" placeHolderCharacter="_">
+                <small class="form-text text-danger d-none"
+                    [ngClass]="{'d-block': submitted && clienteForm.controls.dataNascimento.errors}">
+                    Obrigatório
+                </small>
             </div>
             <div class="form-group">
                 <label for="sexo">*Sexo </label>
@@ -39,37 +52,85 @@
             </div>
             <div class="form-group">
                 <label for="telefone">Telefone </label>
-                <input type="text" class="form-control" id="telefone" [dropSpecialCharacters]="false"
-                    mask="(00)00000-0000" [showMaskTyped]="true" placeHolderCharacter="">
+                <input type="text" formControlName="telefone"
+                    [ngClass]="{'border-danger': submitted && clienteForm.controls.telefone.errors}"
+                    class="form-control" id="telefone" [dropSpecialCharacters]="false" mask="(00)00000-0000"
+                    [showMaskTyped]="true" placeHolderCharacter="_">
+                <small class="form-text text-danger d-none"
+                    [ngClass]="{'d-block': submitted && clienteForm.controls.telefone.errors}">
+                    Obrigatório
+                </small>
             </div>
             <div class="form-group">
                 <label for="email">Email </label>
-                <input type="text" class="form-control" id="email">
+                <input type="text" formControlName="email"
+                    [ngClass]="{'border-danger': submitted && clienteForm.controls.email.errors}" class="form-control"
+                    id="email">
+                <small class="form-text text-danger d-none"
+                    [ngClass]="{'d-block': submitted && clienteForm.controls.email.errors}">
+                    Obrigatório
+                </small>
             </div>
             <div class="form-group">
                 <label for="cep">CEP </label>
-                <input type="text" class="form-control" id="cep" [dropSpecialCharacters]="false" mask="00000-000"
-                    [showMaskTyped]="true" placeHolderCharacter="">
+                <input type="text" formControlName="cep"
+                    [ngClass]="{'border-danger': submitted && clienteForm.controls.cep.errors}" class="form-control"
+                    id="cep" [dropSpecialCharacters]="false" mask="00000-000" [showMaskTyped]="true"
+                    placeHolderCharacter="_">
+                <small class="form-text text-danger d-none"
+                    [ngClass]="{'d-block': submitted && clienteForm.controls.cep.errors}">
+                    Obrigatório
+                </small>
             </div>
             <div class="form-group">
                 <label for="logradouro">*Logradouro </label>
-                <input type="text" class="form-control" id="logradouro">
+                <input type="text" formControlName="logradouro"
+                    [ngClass]="{'border-danger': submitted && clienteForm.controls.logradouro.errors}"
+                    class="form-control" id="logradouro">
+                <small class="form-text text-danger d-none"
+                    [ngClass]="{'d-block': submitted && clienteForm.controls.logradouro.errors}">
+                    Obrigatório
+                </small>
             </div>
             <div class="form-group">
                 <label for="complemento">Complemento </label>
-                <input type="text" class="form-control" id="complemento">
+                <input type="text" formControlName="complemento"
+                    [ngClass]="{'border-danger': submitted && clienteForm.controls.complemento.errors}"
+                    class="form-control" id="complemento">
+                <small class="form-text text-danger d-none"
+                    [ngClass]="{'d-block': submitted && clienteForm.controls.complemento.errors}">
+                    Obrigatório
+                </small>
             </div>
             <div class="form-group">
                 <label for="bairro">*Bairro </label>
-                <input type="text" class="form-control" id="bairro">
+                <input type="text" formControlName="bairro"
+                    [ngClass]="{'border-danger': submitted && clienteForm.controls.bairro.errors}" class="form-control"
+                    id="bairro">
+                <small class="form-text text-danger d-none"
+                    [ngClass]="{'d-block': submitted && clienteForm.controls.bairro.errors}">
+                    Obrigatório
+                </small>
             </div>
             <div class="form-group">
                 <label for="cidade">*Cidade </label>
-                <input type="text" class="form-control" id="cidade">
+                <input type="text" formControlName="cidade"
+                    [ngClass]="{'border-danger': submitted && clienteForm.controls.cidade.errors}" class="form-control"
+                    id="cidade">
+                <small class="form-text text-danger d-none"
+                    [ngClass]="{'d-block': submitted && clienteForm.controls.cidade.errors}">
+                    Obrigatório
+                </small>
             </div>
             <div class="form-group">
                 <label for="uf">*UF </label>
-                <input type="text" class="form-control" id="uf">
+                <input type="text" formControlName="uf"
+                    [ngClass]="{'border-danger': submitted && clienteForm.controls.uf.errors}" class="form-control"
+                    id="uf">
+                <small class="form-text text-danger d-none"
+                    [ngClass]="{'d-block': submitted && clienteForm.controls.uf.errors}">
+                    Obrigatório
+                </small>
             </div>
 
             <div class="row mt-2">

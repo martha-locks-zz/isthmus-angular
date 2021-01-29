@@ -31,16 +31,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ClienteFormComponent implements OnInit {
 
-  @ViewChild('updateBtn')
-  updateBtn!: ElementRef;
+  // @ViewChild('updateBtn') updateBtn: ElementRef;
   public clienteForm = new FormGroup({
     nome: new FormControl('', [Validators.required]),
     cpf: new FormControl('', [Validators.required]),
     dataNascimento: new FormControl('', [Validators.required]),
     sexo: new FormControl('', [Validators.required]),
-    telefone: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    cep: new FormControl('', [Validators.required]),
+    telefone: new FormControl(''),
+    email: new FormControl(''),
+    cep: new FormControl(''),
     logradouro: new FormControl('', [Validators.required]),
     complemento: new FormControl('', [Validators.required]),
     bairro: new FormControl('', [Validators.required]),
@@ -48,7 +47,7 @@ export class ClienteFormComponent implements OnInit {
     uf: new FormControl('', [Validators.required]),
   });
 
-  public submitted!: boolean;
+  public submitted = false;
 
   constructor() { }
 
