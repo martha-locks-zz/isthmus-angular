@@ -15,8 +15,13 @@
 </div>
 <div class="row">
     <div class="col-12">
+
+        <div *ngIf="listClientes.length === 0" class="alert alert-info" role="alert">
+            Nenhum cliente cadastrado.
+        </div>
+
         <!-- Tabela de clientes cadastrados -->
-        <table class="table table-bordered">
+        <table *ngIf="listClientes.length > 0" class="table table-bordered">
             <thead>
                 <tr>
                     <th scope="col">Nome</th>

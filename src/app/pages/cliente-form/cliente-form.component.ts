@@ -25,6 +25,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ClientesService } from 'src/app/services/clientes.service';
 
 @Component({
   selector: 'app-cliente-form',
@@ -33,7 +34,6 @@ import { Router } from '@angular/router';
 })
 export class ClienteFormComponent implements OnInit {
 
-  // @ViewChild('updateBtn') updateBtn: ElementRef;
   public clienteForm = new FormGroup({
     nome: new FormControl('', [Validators.required]),
     cpf: new FormControl('', [Validators.required]),
@@ -54,7 +54,8 @@ export class ClienteFormComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private clientesService: ClientesService
   ) { }
 
   ngOnInit(): void {
@@ -88,27 +89,9 @@ export class ClienteFormComponent implements OnInit {
         cliente: cliente
       };
 
-      const _listClientes = localStorage.getItem('listClientes');
-
-      if (_listClientes) {
-
-        const listClientes = JSON.parse(_listClientes);
-
-        listClientes.push(novoCliente);
-
-        localStorage.setItem('listClientes', JSON.stringify(listClientes));
-
-      } else {
-
-        const listClientes = [
-          novoCliente
-        ];
-
-        localStorage.setItem('listClientes', JSON.stringify(listClientes));
-      }
+      this.clientesService.setCliente(novoCliente);
 
       this.router.navigate(['/home']);
-
     }
   }
 
@@ -126,33 +109,21 @@ export class ClienteFormComponent implements OnInit {
     }
   }
 
+  public searchCpf($event: any): void {
+
+    const cpf: any = $event?.target?.value?.replaceAll(".", "").replaceAll("-", "");
+
+    if (cpf && cpf.length === 11) {
+      this.showMessageCpf = this.clientesService.getClienteByCpf(cpf).length > 0;
+    }
+  }
+
   private fillAddress(address: any): void {
 
     this.clienteForm.get('logradouro')?.setValue(address.logradouro);
     this.clienteForm.get('bairro')?.setValue(address.bairro);
     this.clienteForm.get('cidade')?.setValue(address.localidade);
     this.clienteForm.get('uf')?.setValue(address.uf);
-  }
-
-  private searchCpf() {
-
-    let cpf = this.clienteForm.value.cpf;
-
-    cpf = cpf.replaceAll(".", "").replaceAll("-", "");
-
-    if (cpf.length === 11) {
-
-      const _listClientes = localStorage.getItem('listClientes');
-
-      if (_listClientes) {
-
-        const listClientes = JSON.parse(_listClientes);
-
-        const result = listClientes.filter((pessoa: any) => pessoa.cpf === cpf);
-
-        this.showMessageCpf = result.length > 0;
-      }
-    }
   }
 
 }

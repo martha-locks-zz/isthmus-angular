@@ -21,3 +21,47 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ClientesService {
+
+  private readonly LIST_NAME = 'listClientes';
+
+  constructor() {
+
+    let listClientes: any = localStorage.getItem(this.LIST_NAME);
+
+    if (!listClientes) {
+
+      listClientes = [];
+
+      localStorage.setItem(this.LIST_NAME, JSON.stringify(listClientes));
+    }
+  }
+
+  public getListClientes(): any {
+
+    const listClientes: any = localStorage.getItem(this.LIST_NAME);
+
+    return JSON.parse(listClientes);
+  }
+
+  public setCliente(novoCliente: any): void {
+
+    const listClientes: any = this.getListClientes();
+
+    listClientes.push(novoCliente);
+
+    localStorage.setItem(this.LIST_NAME, JSON.stringify(listClientes));
+  }
+
+  public getClienteByCpf(cpf: string): any {
+
+    const result = this.getListClientes().filter((pessoa: any) => pessoa.cpf === cpf);
+
+    return result;
+  }
+}

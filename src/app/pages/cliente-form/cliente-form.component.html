@@ -35,7 +35,7 @@
                 <input type="text" formControlName="cpf"
                     [ngClass]="{'border-danger': (submitted && clienteForm.controls.cpf.errors) || showMessageCpf}"
                     class="form-control" class="form-control" id="cpf" [dropSpecialCharacters]="false"
-                    mask="000.000.000-00" [showMaskTyped]="true" placeHolderCharacter="_" (keyup)="searchCpf()">
+                    mask="000.000.000-00" [showMaskTyped]="true" placeHolderCharacter="_" (keyup)="searchCpf($event)">
                 <small class="form-text text-danger d-none"
                     [ngClass]="{'d-block': submitted && clienteForm.controls.cpf.errors}">
                     Obrigatório
@@ -81,7 +81,7 @@
                 <label for="telefone">Telefone </label>
                 <input type="text" formControlName="telefone" class="form-control" id="telefone"
                     [dropSpecialCharacters]="false" mask="(00)00000-0000" [showMaskTyped]="true"
-                    placeHolderCharacter="_">
+                    [clearIfNotMatch]="true" placeHolderCharacter="_">
             </div>
         </div>
         <div class="col-6">
