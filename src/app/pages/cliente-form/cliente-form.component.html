@@ -33,12 +33,15 @@
             <div class="form-group">
                 <label for="cpf">CPF *</label>
                 <input type="text" formControlName="cpf"
-                    [ngClass]="{'border-danger': submitted && clienteForm.controls.cpf.errors}" class="form-control"
-                    class="form-control" id="cpf" [dropSpecialCharacters]="false" mask="000.000.000-00"
-                    [showMaskTyped]="true" placeHolderCharacter="_">
+                    [ngClass]="{'border-danger': (submitted && clienteForm.controls.cpf.errors) || showMessageCpf}"
+                    class="form-control" class="form-control" id="cpf" [dropSpecialCharacters]="false"
+                    mask="000.000.000-00" [showMaskTyped]="true" placeHolderCharacter="_" (keyup)="searchCpf()">
                 <small class="form-text text-danger d-none"
                     [ngClass]="{'d-block': submitted && clienteForm.controls.cpf.errors}">
                     Obrigatório
+                </small>
+                <small class="form-text text-danger d-none" [ngClass]="{'d-block':showMessageCpf}">
+                    CPF já utilizado
                 </small>
             </div>
         </div>

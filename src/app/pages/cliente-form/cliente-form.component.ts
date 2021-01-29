@@ -50,6 +50,7 @@ export class ClienteFormComponent implements OnInit {
   });
 
   public submitted = false;
+  public showMessageCpf = false;
 
   constructor(
     private http: HttpClient,
@@ -63,7 +64,8 @@ export class ClienteFormComponent implements OnInit {
 
     this.submitted = true;
 
-    if (this.clienteForm.valid) {
+    if (this.clienteForm.valid && !this.showMessageCpf) {
+
       const cliente = {
         nome: this.clienteForm.value.nome,
         cpf: this.clienteForm.value.cpf,
@@ -131,4 +133,26 @@ export class ClienteFormComponent implements OnInit {
     this.clienteForm.get('cidade')?.setValue(address.localidade);
     this.clienteForm.get('uf')?.setValue(address.uf);
   }
+
+  private searchCpf() {
+
+    let cpf = this.clienteForm.value.cpf;
+
+    cpf = cpf.replaceAll(".", "").replaceAll("-", "");
+
+    if (cpf.length === 11) {
+
+      const _listClientes = localStorage.getItem('listClientes');
+
+      if (_listClientes) {
+
+        const listClientes = JSON.parse(_listClientes);
+
+        const result = listClientes.filter((pessoa: any) => pessoa.cpf === cpf);
+
+        this.showMessageCpf = result.length > 0;
+      }
+    }
+  }
+
 }
