@@ -24,6 +24,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-form',
@@ -51,7 +52,8 @@ export class ClienteFormComponent implements OnInit {
   public submitted = false;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -60,6 +62,52 @@ export class ClienteFormComponent implements OnInit {
   public save() {
 
     this.submitted = true;
+
+    if (this.clienteForm.valid) {
+      const cliente = {
+        nome: this.clienteForm.value.nome,
+        cpf: this.clienteForm.value.cpf,
+        dataNascimento: this.clienteForm.value.dataNascimento,
+        sexo: this.clienteForm.value.sexo,
+        telefone: this.clienteForm.value.telefone,
+        email: this.clienteForm.value.email,
+        cep: this.clienteForm.value.cep,
+        logradouro: this.clienteForm.value.logradouro,
+        complemento: this.clienteForm.value.complemento,
+        bairro: this.clienteForm.value.bairro,
+        cidade: this.clienteForm.value.cidade,
+        uf: this.clienteForm.value.uf
+      };
+
+      const cpf = cliente.cpf.replaceAll(".", "").replaceAll("-", "");
+
+      const novoCliente = {
+        cpf: cpf,
+        cliente: cliente
+      };
+
+      const _listClientes = localStorage.getItem('listClientes');
+
+      if (_listClientes) {
+
+        const listClientes = JSON.parse(_listClientes);
+
+        listClientes.push(novoCliente);
+
+        localStorage.setItem('listClientes', JSON.stringify(listClientes));
+
+      } else {
+
+        const listClientes = [
+          novoCliente
+        ];
+
+        localStorage.setItem('listClientes', JSON.stringify(listClientes));
+      }
+
+      this.router.navigate(['/home']);
+
+    }
   }
 
   public searchCep() {
