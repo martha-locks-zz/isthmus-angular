@@ -9,9 +9,9 @@
     </div>
     <div class="col-12">
         <h2>Formulário de cadastro</h2>
-        <form>
+        <form [formGroup]="clienteForm">
             <div class="form-group">
-                <label for="nome">*Nome </label>
+                <label for="nome">Nome *</label>
                 <input type="text" formControlName="nome"
                     [ngClass]="{'border-danger': submitted && clienteForm.controls.nome.errors}" class="form-control"
                     id="nome">
@@ -135,9 +135,9 @@
 
             <div class="row mt-2">
                 <div class="col-12">
-                    <button class="btn-lg btn-danger">
+                    <a class="btn-lg btn-danger" (click)="save()">
                         Salvar
-                    </button>
+                    </a>
                 </div>
             </div>
         </form>
