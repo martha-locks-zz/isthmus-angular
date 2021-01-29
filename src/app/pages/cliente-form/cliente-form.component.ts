@@ -41,7 +41,7 @@ export class ClienteFormComponent implements OnInit {
     email: new FormControl(''),
     cep: new FormControl(''),
     logradouro: new FormControl('', [Validators.required]),
-    complemento: new FormControl('', [Validators.required]),
+    complemento: new FormControl(''),
     bairro: new FormControl('', [Validators.required]),
     cidade: new FormControl('', [Validators.required]),
     uf: new FormControl('', [Validators.required]),
