@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Project URL
 
-This project was deploy on firebase at [https://isthmus-angular.web.app/](https://isthmus-angular.web.app/)
+This project was deployed on firebase at [https://isthmus-angular.web.app/](https://isthmus-angular.web.app/)
 
 ## Development server
 
