@@ -24,7 +24,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ClientesService } from 'src/app/services/clientes.service';
 
 @Component({
@@ -104,14 +104,26 @@ export class ClienteFormComponent implements OnInit {
         cliente: cliente
       };
 
+      let navigationExtras: NavigationExtras;
+
       if (this.isUpdating) {
+
         this.clientesService.deleteClienteByCpf(cpf);
+
+        navigationExtras = {
+          queryParams: { 'updated': true }
+        };
+
+      } else {
+
+        navigationExtras = {
+          queryParams: { 'saved': true }
+        };
       }
 
       this.clientesService.setCliente(novoCliente);
 
-
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home'], navigationExtras);
     }
   }
 

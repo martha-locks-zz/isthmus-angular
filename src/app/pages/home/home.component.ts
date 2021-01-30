@@ -22,6 +22,7 @@
  * THE SOFTWARE.
  */
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ClientesService } from 'src/app/services/clientes.service';
 declare var $: any;
 @Component({
@@ -34,14 +35,22 @@ export class HomeComponent implements OnInit {
   public listClientes = Array();
   public cliente: any;
   public showDeleteMsg: boolean | undefined;
+  public showSavedMsg: boolean | undefined;
+  public showUpdatedMsg: boolean | undefined;
   private cpf: any;
 
   constructor(
-    private clientesService: ClientesService
+    private clientesService: ClientesService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.loadClientes();
+
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.showSavedMsg = params['saved'];
+      this.showUpdatedMsg = params['updated'];
+    });
   }
 
   public showModal(cpf: any, cliente: any): void {

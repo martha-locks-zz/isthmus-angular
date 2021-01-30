@@ -6,7 +6,8 @@
                 <li class="breadcrumb-item active" aria-current="page">Cadastro</li>
             </ol>
         </nav>
-        <h2>Formulário de cadastro</h2>
+        <h2 *ngIf="!isUpdating">Formulário de cadastro</h2>
+        <h2 *ngIf="isUpdating">Atualização de cadastro</h2>
     </div>
     <div class="col-2">
         <a routerLink="/home" type="button" class="btn btn-secondary float-right mt-2">

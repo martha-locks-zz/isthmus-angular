@@ -20,6 +20,14 @@
             Nenhum cliente cadastrado.
         </div>
 
+        <div *ngIf="showSavedMsg" class="alert alert-success" role="alert">
+            Cliente salvo com sucesso.
+        </div>
+
+        <div *ngIf="showUpdatedMsg" class="alert alert-info" role="alert">
+            Cliente atualizado com sucesso.
+        </div>
+
         <div *ngIf="showDeleteMsg" class="alert alert-danger" role="alert">
             Cliente excluído com sucesso.
         </div>
