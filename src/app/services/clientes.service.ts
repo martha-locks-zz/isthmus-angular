@@ -64,4 +64,11 @@ export class ClientesService {
 
     return result;
   }
+
+  public deleteClienteByCpf(cpf: string): void {
+
+    const result = this.getListClientes().filter((pessoa: any) => pessoa.cpf !== cpf);
+
+    localStorage.setItem(this.LIST_NAME, JSON.stringify(result));
+  }
 }

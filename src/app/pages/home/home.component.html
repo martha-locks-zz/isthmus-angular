@@ -20,7 +20,10 @@
             Nenhum cliente cadastrado.
         </div>
 
-        <!-- Tabela de clientes cadastrados -->
+        <div *ngIf="showDeleteMsg" class="alert alert-danger" role="alert">
+            Cliente excluído com sucesso.
+        </div>
+
         <table *ngIf="listClientes.length > 0" class="table table-bordered">
             <thead>
                 <tr>
@@ -35,12 +38,41 @@
                 <tr *ngFor="let pessoa of listClientes">
                     <td>{{pessoa.cliente.nome}}</td>
                     <td>{{pessoa.cliente.cpf}}</td>
-                    <td><button type="button" class="btn btn-danger">Excluir</button></td>
-                    <td><button type="button" class="btn btn-success">Editar</button></td>
-                    <td><a class="btn btn-primary" [routerLink]="['/detalhes', pessoa.cpf]">Detalhes</a></td>
+                    <td>
+                        <button type="button" class="btn btn-danger" (click)="showModal(pessoa.cpf, pessoa.cliente)">
+                            Excluir
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success">Editar</button>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" [routerLink]="['/detalhes', pessoa.cpf]">Detalhes</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <!-- End Tabela -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">
+                            Excluir {{cliente?.nome}}
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza que deseja <b>EXCLUIR</b> o(a) cliente <b>{{cliente?.nome}} ({{cliente?.cpf}})</b>?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" (click)="delete()">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

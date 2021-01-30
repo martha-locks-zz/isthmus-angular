@@ -23,7 +23,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from 'src/app/services/clientes.service';
-
+declare var $: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -32,13 +32,43 @@ import { ClientesService } from 'src/app/services/clientes.service';
 export class HomeComponent implements OnInit {
 
   public listClientes = Array();
+  public cliente: any;
+  public showDeleteMsg: boolean | undefined;
+  private cpf: any;
 
   constructor(
     private clientesService: ClientesService
   ) { }
 
   ngOnInit(): void {
+    this.loadClientes();
+  }
 
+  public showModal(cpf: any, cliente: any): void {
+
+    this.cpf = cpf;
+    this.cliente = cliente;
+
+    this.showDeleteMsg = false;
+    $('#deleteModal').modal('show');
+  }
+
+  public delete(): void {
+
+    if (this.cpf) {
+
+      this.clientesService.deleteClienteByCpf(this.cpf);
+
+      this.loadClientes();
+
+      this.showDeleteMsg = true;
+
+      $('#deleteModal').modal('hide')
+    }
+
+  }
+
+  private loadClientes(): void {
     this.listClientes = this.clientesService.getListClientes();
   }
 }
