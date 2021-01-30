@@ -24,7 +24,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClientesService } from 'src/app/services/clientes.service';
 
 @Component({
@@ -51,14 +51,29 @@ export class ClienteFormComponent implements OnInit {
 
   public submitted = false;
   public showMessageCpf = false;
+  public isUpdating = false;
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private clientesService: ClientesService
+    private clientesService: ClientesService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+
+    const cpf: any = this.route.snapshot.paramMap.get('cpf');
+
+    const result = this.clientesService.getClienteByCpf(cpf);
+
+    if (result.length > 0) {
+
+      const cliente = (result[0]).cliente;
+
+      this.isUpdating = true;
+
+      this.fillForm(cliente);
+    }
   }
 
   public save() {
@@ -89,7 +104,12 @@ export class ClienteFormComponent implements OnInit {
         cliente: cliente
       };
 
+      if (this.isUpdating) {
+        this.clientesService.deleteClienteByCpf(cpf);
+      }
+
       this.clientesService.setCliente(novoCliente);
+
 
       this.router.navigate(['/home']);
     }
@@ -116,6 +136,22 @@ export class ClienteFormComponent implements OnInit {
     if (cpf && cpf.length === 11) {
       this.showMessageCpf = this.clientesService.getClienteByCpf(cpf).length > 0;
     }
+  }
+
+  private fillForm(cliente: any): void {
+
+    this.clienteForm.get('nome')?.setValue(cliente.nome);
+    this.clienteForm.get('cpf')?.setValue(cliente.cpf);
+    this.clienteForm.get('dataNascimento')?.setValue(cliente.dataNascimento);
+    this.clienteForm.get('sexo')?.setValue(cliente.sexo);
+    this.clienteForm.get('telefone')?.setValue(cliente.telefone);
+    this.clienteForm.get('email')?.setValue(cliente.email);
+    this.clienteForm.get('cep')?.setValue(cliente.cep);
+    this.clienteForm.get('logradouro')?.setValue(cliente.logradouro);
+    this.clienteForm.get('complemento')?.setValue(cliente.complemento);
+    this.clienteForm.get('bairro')?.setValue(cliente.bairro);
+    this.clienteForm.get('cidade')?.setValue(cliente.cidade);
+    this.clienteForm.get('uf')?.setValue(cliente.uf);
   }
 
   private fillAddress(address: any): void {

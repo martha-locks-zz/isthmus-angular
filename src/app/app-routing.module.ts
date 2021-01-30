@@ -30,6 +30,7 @@ import { HomeComponent } from './pages/home/home.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'cliente-form', component: ClienteFormComponent },
+  { path: 'cliente-form/:cpf', component: ClienteFormComponent },
   { path: 'detalhes/:cpf', component: DetalhesComponent },
   { path: '**', component: HomeComponent },
 ];
