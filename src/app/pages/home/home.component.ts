@@ -32,11 +32,15 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
 
+  //Guarda a lista de clientes que vem do local storage
   public listClientes = Array();
+  //Guarda o cliente que vem do service para ser excluido
   public cliente: any;
+  //Variáveis que controlam as mensagens de alerta
   public showDeleteMsg: boolean | undefined;
   public showSavedMsg: boolean | undefined;
   public showUpdatedMsg: boolean | undefined;
+  //Guarda o cpf que será editado e visualizado
   private cpf: any;
 
   constructor(
